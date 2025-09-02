@@ -28,11 +28,11 @@ const Navbar = () => {
   }, [])
 
   const menuItems = [
-    { label: 'אודות', href: '#about', icon: '👩‍🏫' },
-    { label: 'שירותים', href: '#services', icon: '🎯' },
-    { label: 'נושאים', href: '#topics', icon: '📚' },
-    { label: 'המלצות', href: '#testimonials', icon: '⭐' },
-    { label: 'צור קשר', href: '#contact', icon: '💬' }
+    { label: 'אודות', href: '#about' },
+    { label: 'שירותים', href: '#services' },
+    { label: 'נושאים', href: '#topics' },
+    { label: 'המלצות', href: '#testimonials' },
+    { label: 'צור קשר', href: '#contact' }
   ]
 
   const handleMenuClick = (href) => {
