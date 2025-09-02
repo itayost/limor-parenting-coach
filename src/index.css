@@ -1,3 +1,4 @@
+/* src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -27,6 +28,16 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer components {
@@ -45,6 +56,43 @@
   .section-padding {
     @apply py-16 px-4;
   }
+  
+  /* Animation helper classes */
+  .animate-on-scroll {
+    @apply transition-all duration-700 ease-out;
+  }
+  
+  .fade-in-up {
+    @apply translate-y-10 opacity-0;
+  }
+  
+  .fade-in-up.visible {
+    @apply translate-y-0 opacity-100;
+  }
+  
+  .scale-in {
+    @apply scale-0 opacity-0;
+  }
+  
+  .scale-in.visible {
+    @apply scale-100 opacity-100;
+  }
+  
+  .slide-in-left {
+    @apply -translate-x-full opacity-0;
+  }
+  
+  .slide-in-left.visible {
+    @apply translate-x-0 opacity-100;
+  }
+  
+  .slide-in-right {
+    @apply translate-x-full opacity-0;
+  }
+  
+  .slide-in-right.visible {
+    @apply translate-x-0 opacity-100;
+  }
 }
 
 @layer utilities {
@@ -58,5 +106,116 @@
   
   .rotate-slight-neg {
     transform: rotate(-2deg);
+  }
+  
+  /* Performance optimization for animations */
+  .will-change-transform {
+    will-change: transform;
+  }
+  
+  .will-change-opacity {
+    will-change: opacity;
+  }
+  
+  /* GPU acceleration for smooth animations */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Stagger animation delays */
+  .stagger-1 { animation-delay: 100ms; }
+  .stagger-2 { animation-delay: 200ms; }
+  .stagger-3 { animation-delay: 300ms; }
+  .stagger-4 { animation-delay: 400ms; }
+  .stagger-5 { animation-delay: 500ms; }
+  .stagger-6 { animation-delay: 600ms; }
+  .stagger-7 { animation-delay: 700ms; }
+  .stagger-8 { animation-delay: 800ms; }
+}
+
+/* Custom animations for kindergarten theme */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes rainbow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes draw-line {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile */
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  /* Optimize transforms for mobile */
+  .card-kindergarten {
+    transform: translateZ(0);
+  }
+  
+  /* Reduce motion for battery saving */
+  @media (hover: none) {
+    .hover\:scale-110:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+/* Loading state animations */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #f5e9db 25%,
+    #e5d9cb 50%,
+    #f5e9db 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Smooth transitions for all interactive elements */
+a, button, input, textarea, select {
+  @apply transition-all duration-200;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  @apply outline-2 outline-offset-2 outline-tan;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  * {
+    animation: none !important;
+    transition: none !important;
   }
 }
