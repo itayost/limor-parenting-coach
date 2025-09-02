@@ -1,6 +1,7 @@
 // src/components/Navbar.jsx
 import React, { useState, useEffect } from 'react'
 import { Heart, Menu, X, Sparkles, Phone, MessageCircle } from 'lucide-react'
+import logo from '../assets/images/logo.png' // Add your logo image here
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -27,11 +28,11 @@ const Navbar = () => {
   }, [])
 
   const menuItems = [
-    { label: 'אודות', href: '#about'},
-    { label: 'שירותים', href: '#services'},
-    { label: 'נושאים', href: '#topics'},
-    { label: 'המלצות', href: '#testimonials'},
-    { label: 'צור קשר', href: '#contact'}
+    { label: 'אודות', href: '#about', icon: '👩‍🏫' },
+    { label: 'שירותים', href: '#services', icon: '🎯' },
+    { label: 'נושאים', href: '#topics', icon: '📚' },
+    { label: 'המלצות', href: '#testimonials', icon: '⭐' },
+    { label: 'צור קשר', href: '#contact', icon: '💬' }
   ]
 
   const handleMenuClick = (href) => {
@@ -62,19 +63,17 @@ const Navbar = () => {
             <div className={`flex items-center gap-2 transition-all duration-700 ${
               isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}>
-              <div className="relative group">
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center bg-beige transition-all duration-300 ${
-                  scrolled ? 'scale-90' : 'scale-100'
-                } group-hover:scale-110 group-hover:rotate-12`}>
-                  <Heart className="w-6 h-6 text-red-accent fill-red-accent" />
-                </div>
-                <div className={`absolute -top-1 -right-1 transition-all duration-500 ${
-                  isLoaded ? 'opacity-100 rotate-0' : 'opacity-0 rotate-180'
-                }`}>
-                  <Sparkles className="w-4 h-4 text-tan animate-pulse" />
-                </div>
-              </div>
-              <div className={`transition-all duration-300 ${scrolled ? 'scale-95' : 'scale-100'}`}>
+              <a href="/" className="group">
+                <img 
+                  src={logo} 
+                  alt="לימור יער-און - הורות מטפחת" 
+                  className={`transition-all duration-300 ${
+                    scrolled ? 'h-12' : 'h-14 md:h-16'
+                  } w-auto group-hover:scale-105`}
+                />
+              </a>
+              {/* Optional: Keep text version for very small screens or as fallback */}
+              <div className={`hidden transition-all duration-300 ${scrolled ? 'scale-95' : 'scale-100'}`}>
                 <div className="font-bold text-sm text-brown">לימור יער-און</div>
                 <div className="text-xs text-tan">הורות מטפחת</div>
               </div>
