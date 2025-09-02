@@ -35,7 +35,7 @@ const Hero = () => {
               <span className={`block text-2xl md:text-4xl mt-2 text-tan transition-all duration-700 delay-100 ${
                 isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
               }`}>
-                ומלווה קשיי הורך
+                ומלווה קשיי הורות 
               </span>
             </h1>
             
@@ -94,7 +94,7 @@ const Hero = () => {
               <div className="absolute inset-4 rounded-full overflow-hidden border-4 border-white group">
                 <img 
                   src={limorPhoto} 
-                  alt="לימור ירון-אוון" 
+                  alt="לימור יער-און" 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>

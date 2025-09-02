@@ -75,7 +75,7 @@ const Navbar = () => {
                 </div>
               </div>
               <div className={`transition-all duration-300 ${scrolled ? 'scale-95' : 'scale-100'}`}>
-                <div className="font-bold text-sm text-brown">לימור ירון-אוון</div>
+                <div className="font-bold text-sm text-brown">לימור יער-און</div>
                 <div className="text-xs text-tan">הורות מטפחת</div>
               </div>
             </div>

@@ -13,7 +13,7 @@ const Footer = () => {
               <Heart className="w-5 h-5 text-red-accent fill-red-accent" />
             </div>
             <div>
-              <span className="font-bold text-brown">לימור ירון-אוון</span>
+              <span className="font-bold text-brown">לימור יער-און</span>
               <span className="mx-2 text-tan">•</span>
               <span className="text-tan">הורות מטפחת</span>
             </div>
