@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-hebrew;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom selection colors */
+  ::selection {
+    @apply bg-tan/30 text-brown;
+  }
+  
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 rounded-full text-white font-bold hover:scale-105 transition-transform shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 rounded-full font-bold hover:scale-105 transition-transform shadow-lg;
+  }
+  
+  .card-kindergarten {
+    @apply rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all hover:scale-105;
+  }
+  
+  .section-padding {
+    @apply py-16 px-4;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .rotate-slight {
+    transform: rotate(2deg);
+  }
+  
+  .rotate-slight-neg {
+    transform: rotate(-2deg);
+  }
+}
