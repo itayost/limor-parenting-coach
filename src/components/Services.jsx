@@ -1,6 +1,6 @@
-// src/components/Services.jsx
+// src/components/Services.jsx - Scroll to CTA Version
 import React from 'react'
-import { HeartHandshake, Users, Star } from 'lucide-react'
+import { HeartHandshake, Users, Star, ArrowDown } from 'lucide-react'
 import SectionTitle from './common/SectionTitle'
 import useScrollAnimation from '../hooks/useScrollAnimation'
 
@@ -26,6 +26,14 @@ const Services = () => {
     }
   ]
 
+  const scrollToCTA = (e) => {
+    e.preventDefault()
+    const ctaSection = document.getElementById('contact')
+    if (ctaSection) {
+      ctaSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   return (
     <section id="services" className="section-padding bg-cream">
       <div className="container mx-auto">
@@ -45,6 +53,7 @@ const Services = () => {
               {...service} 
               index={index} 
               isVisible={cardsVisible}
+              onButtonClick={scrollToCTA}
             />
           ))}
         </div>
@@ -75,7 +84,7 @@ const Services = () => {
   )
 }
 
-const ServiceCard = ({ icon, title, description, features, color, index, isVisible }) => (
+const ServiceCard = ({ icon, title, description, features, color, index, isVisible, onButtonClick }) => (
   <div 
     className={`card-kindergarten bg-cream relative transition-all duration-700 ${
       index % 2 === 0 ? 'rotate-1' : '-rotate-1'
@@ -110,8 +119,11 @@ const ServiceCard = ({ icon, title, description, features, color, index, isVisib
         ))}
       </div>
 
-      <button className="mt-6 w-full py-2 rounded-full bg-beige text-brown font-medium hover:bg-light-tan hover:scale-105 transition-all">
-        למידע נוסף
+      <button 
+        onClick={onButtonClick}
+        className="mt-6 w-full py-2 rounded-full bg-beige text-brown font-medium hover:bg-light-tan hover:scale-105 transition-all flex items-center justify-center gap-2 group"
+      >
+        <span>למידע נוסף</span>
       </button>
     </div>
   </div>

@@ -94,10 +94,19 @@ const Footer = () => {
         
         {/* Credit */}
         <div className="text-center mt-6">
-          <p className="text-xs text-tan">
-            {siteData.copyright.credit}
-          </p>
-        </div>
+  <div className="inline-flex flex-col items-center gap-2">
+    <p className="text-xs text-tan">{siteData.copyright.credit}</p>
+    <a 
+      href={siteData.copyright.developer.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-1.5 px-3 py-1 bg-beige rounded-full text-brown font-medium hover:bg-light-tan hover:scale-105 transition-all group"
+    >
+      <span className="text-sm">{siteData.copyright.developer.name}</span>
+      <span className="text-red-accent group-hover:animate-pulse">♥</span>
+    </a>
+  </div>
+</div>
       </div>
     </footer>
   )

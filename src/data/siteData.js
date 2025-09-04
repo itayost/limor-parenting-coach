@@ -65,7 +65,11 @@ const siteData = {
   copyright: {
     year: new Date().getFullYear(),
     text: 'כל הזכויות שמורות',
-    credit: 'עוצב ופותח באהבה 💛',
+    credit: 'עוצב ופותח באהבה על ידי',
+    developer: {
+      name: 'ItayOst',
+      url: 'https://www.itayost.com/'
+    }
   },
 };
 
