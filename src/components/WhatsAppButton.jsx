@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { MessageCircle, X } from 'lucide-react'
+import siteData from '../data/siteData'
 
 const WhatsAppButton = () => {
   const [showTooltip, setShowTooltip] = useState(false)
@@ -18,6 +19,8 @@ const WhatsAppButton = () => {
     }
   }, [])
 
+  const whatsappLink = `https://wa.me/${siteData.contact.whatsappNumber}?text=${encodeURIComponent(siteData.messages.whatsappDefault)}`
+
   return (
     <>
       {isVisible && (
@@ -32,14 +35,14 @@ const WhatsAppButton = () => {
                 <X className="w-4 h-4 text-white" />
               </button>
               <p className="text-sm text-brown whitespace-nowrap">
-                היי! יש לך שאלה? 👋
+                {siteData.messages.whatsappCTA}
               </p>
             </div>
           )}
           
           {/* WhatsApp Button */}
           <a
-            href="https://wa.me/972528487336?text=היי%20לימור,%20אשמח%20לשמוע%20עוד%20על%20ההדרכת%20הורים"
+            href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
             className="w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform bg-whatsapp animate-pulse-slow group relative"

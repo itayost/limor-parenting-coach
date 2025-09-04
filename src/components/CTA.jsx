@@ -3,6 +3,7 @@ import React from 'react'
 import { Heart, MessageCircle, Phone } from 'lucide-react'
 import { CloudDecoration, StarDecoration } from './decorations'
 import useScrollAnimation from '../hooks/useScrollAnimation'
+import siteData from '../data/siteData'
 
 const CTA = () => {
   const [sectionRef, sectionVisible] = useScrollAnimation({ threshold: 0.3 })
@@ -50,7 +51,7 @@ const CTA = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="https://wa.me/972528487336"
+              href={`https://wa.me/${siteData.contact.whatsappNumber}`}
               className={`inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full text-white font-bold text-lg hover:scale-110 hover:shadow-2xl transition-all duration-500 bg-whatsapp ${
                 sectionVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
               }`}
@@ -61,14 +62,14 @@ const CTA = () => {
             </a>
             
             <a 
-              href="tel:0528487336"
+              href={`tel:${siteData.contact.phoneFormatted}`}
               className={`inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-bold text-lg hover:scale-110 hover:shadow-2xl transition-all duration-500 bg-light-tan text-brown ${
                 sectionVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
               }`}
               style={{ transitionDelay: '700ms' }}
             >
               <Phone className="w-6 h-6" />
-              052-8487336
+              {siteData.contact.phone}
             </a>
           </div>
           
@@ -76,7 +77,7 @@ const CTA = () => {
             sectionVisible ? 'opacity-100' : 'opacity-0'
           }`}>
             <p className="text-sm text-tan mb-2">שעות פעילות</p>
-            <p className="text-brown">ימים א׳-ה׳ | 9:00-20:00</p>
+            <p className="text-brown">{siteData.businessHours.days} | {siteData.businessHours.hours}</p>
           </div>
         </div>
       </div>

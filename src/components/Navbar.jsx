@@ -1,7 +1,8 @@
 // src/components/Navbar.jsx
 import React, { useState, useEffect } from 'react'
 import { Heart, Menu, X, Sparkles, Phone, MessageCircle } from 'lucide-react'
-import logo from '../assets/images/logo.png' // Add your logo image here
+import logo from '../assets/images/logo.png'
+import siteData from '../data/siteData'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -28,11 +29,11 @@ const Navbar = () => {
   }, [])
 
   const menuItems = [
-    { label: 'אודות', href: '#about' },
-    { label: 'שירותים', href: '#services' },
-    { label: 'נושאים', href: '#topics' },
-    { label: 'המלצות', href: '#testimonials' },
-    { label: 'צור קשר', href: '#contact' }
+    { label: 'אודות', href: '#about'},
+    { label: 'שירותים', href: '#services'},
+    { label: 'נושאים', href: '#topics'},
+    { label: 'המלצות', href: '#testimonials'},
+    { label: 'צור קשר', href: '#contact'}
   ]
 
   const handleMenuClick = (href) => {
@@ -66,7 +67,7 @@ const Navbar = () => {
               <a href="/" className="group">
                 <img 
                   src={logo} 
-                  alt="לימור יער-און - הורות מטפחת" 
+                  alt={`${siteData.personal.name} - ${siteData.personal.subtitle}`}
                   className={`transition-all duration-300 ${
                     scrolled ? 'h-12' : 'h-14 md:h-16'
                   } w-auto group-hover:scale-105`}
@@ -74,8 +75,8 @@ const Navbar = () => {
               </a>
               {/* Optional: Keep text version for very small screens or as fallback */}
               <div className={`hidden transition-all duration-300 ${scrolled ? 'scale-95' : 'scale-100'}`}>
-                <div className="font-bold text-sm text-brown">לימור יער-און</div>
-                <div className="text-xs text-tan">הורות מטפחת</div>
+                <div className="font-bold text-sm text-brown">{siteData.personal.name}</div>
+                <div className="text-xs text-tan">{siteData.personal.subtitle}</div>
               </div>
             </div>
 
@@ -108,7 +109,7 @@ const Navbar = () => {
               
               {/* CTA Button - Desktop */}
               <a
-                href="https://wa.me/972528487336"
+                href={`https://wa.me/${siteData.contact.whatsappNumber}`}
                 className={`ml-4 px-4 py-2 bg-red-accent text-white rounded-full hover:scale-110 hover:shadow-xl transition-all duration-500 flex items-center gap-2 ${
                   isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
                 }`}
@@ -174,14 +175,14 @@ const Navbar = () => {
                   : '-translate-y-10 opacity-0'
               }`} style={{ transitionDelay: isMenuOpen ? '300ms' : '0ms' }}>
                 <a
-                  href="https://wa.me/972528487336"
+                  href={`https://wa.me/${siteData.contact.whatsappNumber}`}
                   className="flex-1 px-4 py-3 bg-whatsapp text-white rounded-full flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all"
                 >
                   <MessageCircle className="w-5 h-5" />
                   <span className="font-medium">WhatsApp</span>
                 </a>
                 <a
-                  href="tel:0528487336"
+                  href={`tel:${siteData.contact.phoneFormatted}`}
                   className="flex-1 px-4 py-3 bg-red-accent text-white rounded-full flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all"
                 >
                   <Phone className="w-5 h-5" />

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { MessageCircle, Users, Star, Heart, Smile } from 'lucide-react'
 import { CloudDecoration, StarDecoration, HeartDecoration } from './decorations'
 import limorPhoto from '../assets/images/limor.jpg'
+import siteData from '../data/siteData'
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -10,6 +11,13 @@ const Hero = () => {
   useEffect(() => {
     setIsLoaded(true)
   }, [])
+
+  // Map features to icons
+  const featureIcons = {
+    'גילאי 3-18': <Users />,
+    '30 שנות ניסיון': <Star />,
+    'גישה חמה ומקצועית': <Heart />
+  }
 
   return (
     <section className="pt-24 pb-12 px-4 relative overflow-hidden">
@@ -31,25 +39,25 @@ const Hero = () => {
             <h1 className={`text-3xl md:text-5xl font-bold mb-4 leading-tight text-brown transition-all duration-700 ${
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}>
-              אומנת הורים 
+              {siteData.personal.title}
               <span className={`block text-2xl md:text-4xl mt-2 text-tan transition-all duration-700 delay-100 ${
                 isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
               }`}>
-                ומלווה קשיי הורות 
+                לילדים בגיל הרך
               </span>
             </h1>
             
             <p className={`text-lg md:text-xl mb-6 text-brown transition-all duration-700 delay-200 ${
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}>
-              30 שנות ניסיון בחינוך • מורה, יועצת ומדריכה
+              {siteData.personal.experience} • {siteData.personal.roles}
             </p>
             
             <div className={`flex flex-col sm:flex-row gap-4 justify-center lg:justify-start transition-all duration-700 delay-300 ${
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}>
               <a 
-                href="https://wa.me/972528487336"
+                href={`https://wa.me/${siteData.contact.whatsappNumber}`}
                 className="btn-primary bg-red-accent flex items-center justify-center gap-2 hover:shadow-2xl transform hover:-translate-y-1 transition-all"
               >
                 <MessageCircle className="w-5 h-5" />
@@ -65,19 +73,17 @@ const Hero = () => {
 
             {/* Trust Badges with pop animation */}
             <div className="flex flex-wrap gap-4 mt-8 justify-center lg:justify-start">
-              {[
-                { icon: <Users />, text: "גילאי 3-18", delay: "delay-500" },
-                { icon: <Star />, text: "30 שנות ניסיון", delay: "delay-600" },
-                { icon: <Heart />, text: "גישה חמה ומקצועית", delay: "delay-700" }
-              ].map((badge, index) => (
+              {siteData.features.slice(0, 3).map((feature, index) => (
                 <div
                   key={index}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full bg-beige transition-all duration-700 ${badge.delay} ${
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full bg-beige transition-all duration-700 delay-${500 + index * 100} ${
                     isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
                   } hover:scale-110 hover:shadow-lg`}
                 >
-                  <div className="text-tan">{badge.icon}</div>
-                  <span className="text-sm font-medium text-brown">{badge.text}</span>
+                  <div className="text-tan">
+                    {featureIcons[feature] || <Star />}
+                  </div>
+                  <span className="text-sm font-medium text-brown">{feature}</span>
                 </div>
               ))}
             </div>
@@ -94,7 +100,7 @@ const Hero = () => {
               <div className="absolute inset-4 rounded-full overflow-hidden border-4 border-white group">
                 <img 
                   src={limorPhoto} 
-                  alt="לימור יער-און" 
+                  alt={siteData.personal.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>

@@ -3,6 +3,7 @@ import React from 'react'
 import SectionTitle from './common/SectionTitle'
 import { WaveTop } from './decorations'
 import useScrollAnimation from '../hooks/useScrollAnimation'
+import siteData from '../data/siteData'
 
 const About = () => {
   const [sectionRef, sectionVisible] = useScrollAnimation({ threshold: 0.2 })
@@ -18,7 +19,7 @@ const About = () => {
         }`}>
           <SectionTitle 
             title="קצת עליי" 
-            subtitle="30 שנות ניסיון בחינוך ובהדרכת הורים" 
+            subtitle={`${siteData.personal.experience} בחינוך ובהדרכת הורים`}
           />
         </div>
         
@@ -57,12 +58,7 @@ const About = () => {
             </p>
             
             <div className="flex flex-wrap gap-4 mt-8">
-              {[
-                "ניסיון של 30 שנה",
-                "גילאי 3-18",
-                "הנחייה פרטנית וקבוצתית",
-                "גישה חמה ומקצועית"
-              ].map((text, index) => (
+              {siteData.features.map((text, index) => (
                 <div
                   key={index}
                   className={`px-4 py-2 rounded-full text-sm font-bold bg-light-tan text-brown transition-all duration-500 hover:scale-110 hover:shadow-lg ${

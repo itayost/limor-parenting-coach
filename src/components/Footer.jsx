@@ -1,5 +1,6 @@
 import React from 'react'
-import { Heart, Facebook, Instagram, Mail } from 'lucide-react'
+import { Heart, Facebook, Instagram, Mail, Linkedin, Youtube } from 'lucide-react'
+import siteData from '../data/siteData'
 
 const Footer = () => {
   return (
@@ -13,30 +14,53 @@ const Footer = () => {
               <Heart className="w-5 h-5 text-red-accent fill-red-accent" />
             </div>
             <div>
-              <span className="font-bold text-brown">לימור יער-און</span>
+              <span className="font-bold text-brown">{siteData.personal.name}</span>
               <span className="mx-2 text-tan">•</span>
-              <span className="text-tan">הורות מטפחת</span>
+              <span className="text-tan">{siteData.personal.subtitle}</span>
             </div>
           </div>
           
-          {/* Social Links */}
+          {/* Social Links - Only show available ones */}
           <div className="flex gap-4">
+            {siteData.social.facebook && (
+              <a 
+                href={siteData.social.facebook}
+                className="w-10 h-10 rounded-full bg-beige flex items-center justify-center hover:bg-light-tan transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-5 h-5 text-brown" />
+              </a>
+            )}
+            {siteData.social.instagram && (
+              <a 
+                href={siteData.social.instagram}
+                className="w-10 h-10 rounded-full bg-beige flex items-center justify-center hover:bg-light-tan transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5 text-brown" />
+              </a>
+            )}
+            {siteData.social.linkedin && (
+              <a 
+                href={siteData.social.linkedin}
+                className="w-10 h-10 rounded-full bg-beige flex items-center justify-center hover:bg-light-tan transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5 text-brown" />
+              </a>
+            )}
+            {siteData.social.youtube && (
+              <a 
+                href={siteData.social.youtube}
+                className="w-10 h-10 rounded-full bg-beige flex items-center justify-center hover:bg-light-tan transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-5 h-5 text-brown" />
+              </a>
+            )}
+            {/* Email - Always show */}
             <a 
-              href="#" 
-              className="w-10 h-10 rounded-full bg-beige flex items-center justify-center hover:bg-light-tan transition-colors"
-              aria-label="Facebook"
-            >
-              <Facebook className="w-5 h-5 text-brown" />
-            </a>
-            <a 
-              href="#" 
-              className="w-10 h-10 rounded-full bg-beige flex items-center justify-center hover:bg-light-tan transition-colors"
-              aria-label="Instagram"
-            >
-              <Instagram className="w-5 h-5 text-brown" />
-            </a>
-            <a 
-              href="mailto:limor@example.com" 
+              href={`mailto:${siteData.contact.email}`}
               className="w-10 h-10 rounded-full bg-beige flex items-center justify-center hover:bg-light-tan transition-colors"
               aria-label="Email"
             >
@@ -50,18 +74,18 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
             {/* Copyright */}
             <p className="text-tan">
-              © 2024 כל הזכויות שמורות
+              © {siteData.copyright.year} {siteData.copyright.text}
             </p>
             
             {/* Links */}
             <div className="flex gap-6">
-              <a href="#" className="text-brown hover:text-tan transition-colors">
+              <a href={siteData.footerLinks.privacy} className="text-brown hover:text-tan transition-colors">
                 מדיניות פרטיות
               </a>
-              <a href="#" className="text-brown hover:text-tan transition-colors">
+              <a href={siteData.footerLinks.terms} className="text-brown hover:text-tan transition-colors">
                 תנאי שימוש
               </a>
-              <a href="#" className="text-brown hover:text-tan transition-colors">
+              <a href={siteData.footerLinks.accessibility} className="text-brown hover:text-tan transition-colors">
                 נגישות
               </a>
             </div>
@@ -71,7 +95,7 @@ const Footer = () => {
         {/* Credit */}
         <div className="text-center mt-6">
           <p className="text-xs text-tan">
-            עוצב ופותח באהבה 💛
+            {siteData.copyright.credit}
           </p>
         </div>
       </div>
